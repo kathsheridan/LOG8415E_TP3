@@ -9,22 +9,22 @@ Initializing random number generator from current time
 
 Initializing worker threads...
 
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
-FATAL: mysql_stmt_prepare() failed
-FATAL: MySQL error: 1146 "Table 'sakila.sbtest1' doesn't exist"
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:284: SQL API error
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
+FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
+FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
 FATAL: Thread initialization failed!

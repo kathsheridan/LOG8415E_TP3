@@ -8,9 +8,9 @@ from security_groups import *
 
 def main():
     # Aws credentials
-    aws_access_key_id = "ASIAXEOTBFHD3YM3GW7K"
-    aws_secret_access_key = "nUeGrQcBKB+AfdBH+FZjhX3kpzOjWRUUEin08bCU"
-    aws_session_token = "FwoGZXIvYXdzEID//////////wEaDCqG5haS6+QS2p8xXiKCAWfIl6f8EbwpSOqFRNyj9IfvbI8SEClId7FXfaCPTsqkHzPcF3XUI49iUTM9368JGzInJj3PzNI4ptqjggHIOmtvpVibYNc+y5h7dQxDclJcWgSZG0FMefRZr785wVzucFmUMdPIfhG1xRi4LlYt3q6lIDZJ5A+Sd1nIB3V3cUayhjIo/7DCrAYyKERdR2yr3x2ldKF6OyWNQc0euhgpFO2MonDxmWWy9UyFj7bciUKCk5U="
+    aws_access_key_id = "ASIAXEOTBFHD4NDHELQR"
+    aws_secret_access_key = "3UdmNSdEvuYpWTjsaGfdtPdq2TlmUiDUExBHtufL"
+    aws_session_token = "FwoGZXIvYXdzEJP//////////wEaDOobPxJoT0qRjCCBdiKCAahzZKQFG8euNEyed12NirKFM2rhcAlfK3qxeW9Ue8dUhTmBe4xQg7rGu1UDXDXkjOdF2zHU+kHsHMrhKU3EzpZ4m5Dn6m8axVRlbwCN/4D0k8+8350Oy24SAfnsBWMMHr5YW2MRs2I8Lke0045lyNyRamsblvrZysVP4Udt/uLXNLMozcXGrAYyKIXL+X94G1m+Yfs5oQpAhtV9ocutjjXImM+IqcHk5ugaelrEHlC0Rm8="
 
     ec2_client = boto3.client('ec2',
                               aws_access_key_id=aws_access_key_id,
