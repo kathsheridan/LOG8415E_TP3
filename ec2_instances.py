@@ -159,9 +159,22 @@ if __name__ == "__main__":
         instance_ip, instance_dns_name = start_instance(user_data)
         instance_infos.append({'ip': instance_ip, 'dns': instance_dns_name})
 
-    with open('env_variables.txt', 'w+') as f:
+    with open('environment_vars.txt', 'w+') as f:
         for idx, instance_info in enumerate(instance_infos):
             if idx == 0:
                 f.write(f'INSTANCE_IP_MASTER_IP={instance_info["ip"]}\n')
                 f.write(f'INSTANCE_IP_MASTER_DNS={instance_info["dns"]}\n')
-            elif idx ==
+            elif idx == len(instance_infos) - 2:
+                f.write(f'INSTANCE_IP_PROXY_IP={instance_info["ip"]}\n')
+                f.write(f'INSTANCE_IP_PROXY_DNS={instance_info["dns"]}\n')
+            elif idx == len(instance_infos) - 1:
+                f.write(f'INSTANCE_IP_STANDALONE_IP={instance_info["ip"]}\n')
+                f.write(f'INSTANCE_IP_STANDALONE_DNS={instance_info["dns"]}\n')
+            else:
+                f.write(f'INSTANCE_IP_CHILD_IP_{idx-1}={instance_info["ip"]}\n')
+                f.write(f'INSTANCE_IP_CHILD_DNS_{idx-1}={instance_info["dns"]}\n')
+        f.write(f'PRIVATE_KEY_FILE={private_key_filename}\n')
+    print('Wrote instance\'s IP and private key filename to environment_vars.txt')
+
+    generate_cluster_config_file(instance_infos)
+    generate_proxy_py(instance_infos)
