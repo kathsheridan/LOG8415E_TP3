@@ -50,16 +50,16 @@ wait_until_instance_running () {
 
 echo "Installing mysql cluster management on $INSTANCE_IP_MASTER_IP..."
 # Copy and run the install script on the master node
-scp -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" install_mysql_cluster_master.sh ubuntu@"$INSTANCE_IP_MASTER_IP":~
-ssh -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP_MASTER_IP" 'chmod +x install_mysql_cluster_master.sh && sudo ./install_mysql_cluster_master.sh'
+scp -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" master_node.sh ubuntu@"$INSTANCE_IP_MASTER_IP":~
+ssh -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP_MASTER_IP" 'chmod +x master_node.sh && sudo ./master_node.sh'
 
 # Install MySQL Cluster on child nodes
 for INSTANCE_IP in "$INSTANCE_IP_CHILD_IP_0" "$INSTANCE_IP_CHILD_IP_1" "$INSTANCE_IP_CHILD_IP_2"; do
     wait_until_instance_running "$INSTANCE_IP"
     echo "Installing mysql cluster on $INSTANCE_IP : copying install script..."
-    scp -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" install_mysql_cluster_child.sh ubuntu@"$INSTANCE_IP":~
+    scp -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" slave_node.sh ubuntu@"$INSTANCE_IP":~
     echo "Running script..."
-    ssh -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP" 'chmod +x install_mysql_cluster_child.sh && sudo ./install_mysql_cluster_child.sh'
+    ssh -o "StrictHostKeyChecking no" -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP" 'chmod +x slave_node.sh && sudo ./slave_node.sh'
     echo "mysql cluster installed"
 done
 
@@ -73,8 +73,8 @@ done
 
 # Install MySQL Server on the master node
 echo "Installing mysql-server on the management node"
-scp -i "$PRIVATE_KEY_FILE" master_node/config.ini install_mysql_server.sh master_node/server_conf.conf ubuntu@"$INSTANCE_IP_MASTER_IP":~
-ssh -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP_MASTER_IP" 'chmod +x install_mysql_server.sh && sudo ./install_mysql_server.sh'
+scp -i "$PRIVATE_KEY_FILE" master_node/config.ini mysql_server.sh master_node/server_conf.conf ubuntu@"$INSTANCE_IP_MASTER_IP":~
+ssh -i "$PRIVATE_KEY_FILE" ubuntu@"$INSTANCE_IP_MASTER_IP" 'chmod +x mysql_server.sh && sudo ./mysql_server.sh'
 
 echo "Successfully started master node"
 

@@ -1,6 +1,4 @@
-WARNING: --num-threads is deprecated, use --threads instead
-WARNING: --max-time is deprecated, use --time instead
-sysbench 1.0.20 (using system LuaJIT 2.1.0-beta3)
+sysbench 1.0.18 (using system LuaJIT 2.1.0-beta3)
 
 Running the test with following options:
 Number of threads: 6
@@ -9,22 +7,31 @@ Initializing random number generator from current time
 
 Initializing worker threads...
 
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: unable to connect to MySQL server on host 'localhost', port 3306, aborting...
-FATAL: error 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
-FATAL: `thread_init' function failed: /usr/share/sysbench/oltp_common.lua:349: connection creation failed
-FATAL: Thread initialization failed!
+Threads started!
+
+SQL statistics:
+    queries performed:
+        read:                            219296
+        write:                           62656
+        other:                           31328
+        total:                           313280
+    transactions:                        15664  (260.98 per sec.)
+    queries:                             313280 (5219.55 per sec.)
+    ignored errors:                      0      (0.00 per sec.)
+    reconnects:                          0      (0.00 per sec.)
+
+General statistics:
+    total time:                          60.0182s
+    total number of events:              15664
+
+Latency (ms):
+         min:                                   10.11
+         avg:                                   22.98
+         max:                                   89.29
+         95th percentile:                       30.81
+         sum:                               359996.84
+
+Threads fairness:
+    events (avg/stddev):           2610.6667/6.37
+    execution time (avg/stddev):   59.9995/0.00
+
