@@ -116,6 +116,15 @@ def start_instance(user_data):
     print(f'Instance {instance.id} started. Access it with \'ssh -i {private_key_filename} ubuntu@{instance_ip}\'')
     return instance_ip, instance_dns_name
 
+def start_proxy_instance(user_data):
+    # Start an instance with the lab2 configuration
+    instance = create_ec2('t2.large', sg_id, key_name, user_data)
+    print(f'Waiting for instance {instance.id} to be running...')
+    instance.wait_until_running()
+    instance_ip, instance_dns_name = retrieve_instance_ip_dns(instance.id)
+    print(f'Instance {instance.id} started. Access it with \'ssh -i {private_key_filename} ubuntu@{instance_ip}\'')
+    return instance_ip, instance_dns_name
+
 def generate_cluster_config_file(instance_infos):
     # Generate configuration files for the cluster
     template_master = constants.TEMPLATE_MASTER
@@ -134,7 +143,7 @@ def generate_cluster_config_file(instance_infos):
 
 def generate_proxy_py(instance_infos):
     # Generate the proxy python file used for the proxy cloud pattern
-    with open('template_proxy.py', 'r') as f:
+    with open('proxy_pattern.py', 'r') as f:
         lines = f.read()
     formatted_lines = lines.replace('_MASTER_HOSTNAME_PLACEHOLDER_', instance_infos[0]['ip']) \
                             .replace("_SLAVE_1_HOSTNAME_PLACEHOLDER_", instance_infos[1]['ip']) \
@@ -156,7 +165,9 @@ if __name__ == "__main__":
     for i in range(6):
         if i == 4:
             user_data = constants.USER_DATA_PROXY
-        instance_ip, instance_dns_name = start_instance(user_data)
+            instance_ip, instance_dns_name = start_proxy_instance(user_data)
+        else:
+            instance_ip, instance_dns_name = start_instance(user_data)
         instance_infos.append({'ip': instance_ip, 'dns': instance_dns_name})
 
     with open('environment_vars.txt', 'w+') as f:
